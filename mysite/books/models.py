@@ -10,7 +10,6 @@ class Book(models.Model):
     # 책과 출판사는 N:1 관계(여러 권의 Book은 하나의 publisher간에 관계)
     # 출판사의 pk기준으로 참조하는 데이터는 해당 pk 삭제시 Books table에서도 자동 삭제
     publisher = models.ForeignKey('Publisher', on_delete=models.CASCADE)
-
     publication_date = models.DateField()
 
     # Book 객첵값 출력시 자동 호출되는 함수

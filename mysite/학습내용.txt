@@ -29,7 +29,7 @@
     3. Template 의 재사용 기술
         1. 화면 구성을 공통적으로 구성시에 상속 개념을 반영해서 
            화면도 상속 가능
-        2. templage tag 활용 
+        2. template tag 활용 
 
 
 4. books의 도메인

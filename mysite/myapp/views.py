@@ -8,6 +8,10 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 
+def main(request):
+    print("---------main()-------------")
+    return render(request, 'main.html')
+
 # http://127.0.0.1:8000/myapp
 def index(request):
     print("---------index()-------------")
