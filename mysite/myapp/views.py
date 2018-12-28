@@ -57,17 +57,8 @@ def ajaxRes(request):
     context = {'message': "비동기로 응답하는 데이터", 'age' : 20, 'like_count': 10, 'data':"['Task', 'Hours per Day'],['Work',     11],['Eat',      2],['Commute',  2],['Watch TV', 2],['Sleep',    7]"}
     return HttpResponse(json.dumps(context), content_type="application/json")
 
+# 순수 자바 스크립트로 요청 받고 응답하는 함수
+def myReqRes(request):
+    print('---myReqRes()---')
+    return HttpResponse("{'name':'해인', 'age':20}", content_type = "text/plain")
 
-
-'''
-* mysite/urls.py
-    
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('myapp/', views.index, name='index'),
-    path('myapp/<int:question_id>/', views.detail, name='detail'),
-    path('myapp/<int:question_id>/results', views.results, name='results'),
-    path('myapp/<int:question_id>/vote', views.vote, name='vote'),
-]
-
-'''

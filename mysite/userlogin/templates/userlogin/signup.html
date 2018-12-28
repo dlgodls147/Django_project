@@ -7,8 +7,8 @@
 
 </head> 
 <body> 
-   <h2>signup</h2>
-   <form action="{% url 'userlogin:singup' %}" method="POST">
+   <h2>회원가입</h2>
+   <form action="{% url 'userlogin:signup' %}" method="POST">
         {% csrf_token %}
         <table>
             {{form.as_table}}

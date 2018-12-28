@@ -1,12 +1,14 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<body>
+
 <h1>index.html</h1>
 {% block branding %}
 <a href="{% url 'admin:index' %}"><input type="button" class="btn btn-info btn-lg" value="admin"></a>
 {% endblock %}
 <hr>
 <br>
-
+<body>
 {% if latest_question_list %}
     <ul>
         {% for question in latest_question_list %}
@@ -20,12 +22,40 @@
 <hr>
 <h3>비동기 처리</h3>
 <br>
-<input type="button" class="like btn btn-info btn-lg" name="master" value="비동기 test">
+<input type="button" class="like btn btn-info btn-lg" name="master" value="비동기 test1">
+<br>
+<!--순수 자바 스크립트로 비동기 개발 진행-->
+<input type="button" class="ajaxTest btn btn-info btn-lg" onclick="ajaxReqResMy()" value="비동기 test2">
+<div id = "myDataView"></div>
+
+<script>
+    function ajaxReqResMy() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                data = this.responseText;
+
+                console.log(data);
+                console.log(data.name);
+                data = eval('('+data+')');
+                console.log(data.name);
+                document.getElementById("myDataView").innerHTML = data.name;
+                
+            }
+        };
+        xhttp.open("GET", "myReqRes", true);
+        xhttp.send();
+    }
+</script>
+
 
 <p id="count"></p>
-
+<!--차트 출력 영역-->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+<div id="piechart" style="width: 900px; height: 500px;"></div>
 
 <script type="text/javascript">
   $(".like").click(function(){
@@ -46,6 +76,7 @@
       },
     });
   })
+
     google.charts.load('current', {'packages':['corechart']});  
     function drawChart(v) {
                 
@@ -60,6 +91,6 @@
         chart.draw(data, options);
     }
    
+    
 </script>
-
-<div id="piechart" style="width: 900px; height: 500px;">`</div>
+</body>

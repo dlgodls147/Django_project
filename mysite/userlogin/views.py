@@ -15,8 +15,8 @@ def index(request):
     else:
         data = {"last_login":request.user.last_login, "username":request.user.username,
         "password":request.user.password,"is_authenticated":request.user.is_authenticated}
-    return render(request, "userlogin/index.html", context= {"data":data})
-
+    return render(request, "userlogin/index.html", context= {"data":data}
+    )
 @csrf_exempt
 def signup(request):
     print("----------singup()--------------")
@@ -30,7 +30,7 @@ def signup(request):
             return render_to_response("userlogin/index.html",{"msg":"회원 가입 실패, 다시시도해주세요"})
     else:
         form = UserForm()
-        return render(request, "userlogin/singup.html", {"form" : form})
+        return render(request, "userlogin/signup.html",{"form" : form})
     return render(request, "userlogin/index.html")
 
 
